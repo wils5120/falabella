@@ -1,0 +1,30 @@
+{
+  "name": "falabella",
+  "version": "1.0.0",
+  "description": "conexion a bd",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wils5120/falabella.git"
+  },
+  "author": "Andres figueroa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wils5120/falabella/issues"
+  },
+  "homepage": "https://github.com/wils5120/falabella#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongojs": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
