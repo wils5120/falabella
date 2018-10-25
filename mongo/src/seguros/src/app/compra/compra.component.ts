@@ -5,17 +5,18 @@ import { CompraService } from '../services/compra.service';
 @Component({
   selector: 'app-compra',
   templateUrl: './compra.component.html',
-  styleUrls: ['./compra.component.css']
+  styleUrls: ['./compra.component.scss']
 })
 export class CompraComponent implements OnInit {
 
   compra: Compra [];
   nombre: String;
   number: Number;
-  cedula: Number;
-  tipo: String;
-  NumerPoli: Number;
-
+  cedula: String;
+  ver: String = 'Poliza SOAT';
+  valorSoap: String = '300.000 COP';
+  soat: boolean;
+  riesgo: boolean;
   constructor( private Compras: CompraService ) {
     this.Compras.getCompra().subscribe(res => {
       this.compra = res;
@@ -31,15 +32,35 @@ export class CompraComponent implements OnInit {
       nombre: this.nombre,
       isDone: false,
       cedula: this.cedula,
-       tipo: this.tipo,
-       NumPoli: this.NumerPoli,
+      ver: this.ver,
+      valorSoap: this.valorSoap,
+      soat: this.soat,
+      riesgo: this.riesgo,
+
     };
-    this.Compras.addCompra(newCompra)
-    .subscribe( task => {
-     this.compra.push(task);
-      this.nombre = ' ';
+
+
+
+      if ( newCompra.soat === true) {
+        this.ver = 'Poliza SOAT';
+        this.valorSoap = '300.000 COP';
+      }
+      if (newCompra.riesgo === true) {
+        this.ver = 'Las pólizas todo riesgo de vehiculos';
+        this.valorSoap = '900.000 COP';
+      }
+      this.Compras.addCompra(newCompra)
+      .subscribe( task => {
+      this.compra.push(task);
+      this.nombre = '';
+      this.cedula = '';
+      console.log(task);
+      console.log(this.ver);
     });
+
   }
+
+
 
   deleteCompra(id) {
     const resp = confirm('esta seguro de eliminar el dato?');
@@ -62,12 +83,18 @@ export class CompraComponent implements OnInit {
     const newcompra = {
       _id: c1._id,
       nombre: c1.nombre,
-      isDone: !c1.isDone
+      isDone: !c1.isDone,
+      soat: this.soat,
+      riesgos: this.riesgo,
     };
 
     this.Compras.updateCompra(newcompra).subscribe(respu => {
       c1.isDone = !c1.isDone;
     });
+  }
+
+  end() {
+    alert('compra finalizada');
   }
 
 }

@@ -1,9 +1,11 @@
 export class Compra {
   _id?: String;
-  cedula?: Number;
+  cedula?: String;
   nombre?: String;
-  tipo?: String;
-  NumPoli?: Number;
   isDone?: boolean;
   n?: Number;
+  soat: boolean;
+  ver: String;
+  riesgo: boolean;
+  valorSoap: String;
 }

@@ -1,10 +1,16 @@
 <div class="card">
   <div class="card-body">
     <form (submit)="addCompras($event)">
-      <div class="input-group">
-        <input type="text" name="nombre" [(ngModel)]="nombre" placeholder="add compra" class="form-control">
+      <div class="">
+        <input type="text" name="nombre" [(ngModel)]="nombre" placeholder="Nombre" class="form-control">
+        <input type="text" name="cedula" [(ngModel)]="cedula" placeholder="Cedula" class="form-control">
+        <div class="sub">
+          <p>Seleccione el tipo de poliza a comprar</p>
+          <input type="checkbox"  name="soat" [(ngModel)]="soat" checked > Poliza SOAT <p></p>
+          <input type="checkbox" name="riesgo" [(ngModel)]="riesgo"  checked >Pólizas todo riesgo<p></p>
+        </div>
         <span class="input-group-addon">
-          <button type="submit" class="btn btn-primary">add Compra</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
         </span>
       </div>
     </form>
@@ -14,10 +20,12 @@
 <table class="table">
   <thead>
     <tr>
-      <th>falabella</th>
-      <th>comprar seguro</th>
-      <th>comprar polisa</th>
-      <th>status</th>
+      <th>seleccion</th>
+      <th>Nombre</th>
+      <th>Cedula</th>
+      <th>Tipo de poliza</th>
+      <th>Valor de poliza</th>
+        <th>eliminar</th>
     </tr>
   </thead>
   <tbody>
@@ -27,10 +35,22 @@
       </td>
       <td> {{c1.nombre}} </td>
       <td>
+        {{c1.cedula}}
+      </td>
+      <td>
+        {{c1.ver}}
+      </td>
+      <td>
+        {{c1.valorSoap}}
+      </td>
+      <td>
         <button class="btn btn-danger" (click)="deleteCompra(c1._id)">
           <i class="fa fa-trash"></i>
         </button>
       </td>
     </tr>
   </tbody>
+  <span class="input-group-addon">
+      <button type="submit" class="btn btn-primary" (click)="end()">Confirmar Compra</button>
+    </span>
 </table>

@@ -1,0 +1,23 @@
+.card-body{
+  .form-control{
+    margin-top: 2%;
+  }
+  .sub{
+    margin-top: 2%;
+    .span{
+      margin-left: 2%;
+    }
+  }
+}
+.table{
+  .btn-danger{
+    border-color: green;
+    &:active{
+      background-color: green;
+    }
+  }
+}
+.btn{
+  background-color: green;
+  border: green;
+}

@@ -19,7 +19,7 @@ const db = mongojs('demo', ['tasks']);
 
     router.post('/task', (req, res, next) => {
         const task = req.body;
-        if(!task.nombre ||!( task.isDone + '')){
+        if(!task.nombre || !(task.cedula) ||!( task.isDone + '')){
             res.status(400).json({
                 error: 'bad date'
             });
